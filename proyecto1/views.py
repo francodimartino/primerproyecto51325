@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 import datetime
-from django.template import Template, Context
+from django.template import Template, Context, loader
 
 
 def saludar(request):
@@ -23,7 +23,9 @@ def calcula_anio_nacimiento(request, edad):
     anio_nacimiento=anio_actual-int(edad)
     return HttpResponse(f"Usted nacio en el anio {anio_nacimiento}")
 
-def probandoHtml(request):
+""" def probandoHtml(request):
+
+    diccionario={"nombre":"Juan", "apellido":"Perez", "edad":25, "lista":[10,5,2,7,8,3,8,10]}
 
     archivo=open(r"H:\CODERHOUSE\51325\clase17\proyecto1\Plantillas\template1.html")
 
@@ -31,6 +33,17 @@ def probandoHtml(request):
     archivo.close()
 
     template=Template(texto)
-    contexto=Context()
+    contexto=Context(diccionario)
     documento=template.render(contexto)
+    return HttpResponse(documento) """
+
+
+
+def probandoHtml(request):
+
+    diccionario={"nombre":"Juan", "apellido":"Perez", "edad":25, "lista":[10,5,2,7,8,3,8,10]}
+
+    template=loader.get_template("template1.html")
+    
+    documento=template.render(diccionario)
     return HttpResponse(documento)

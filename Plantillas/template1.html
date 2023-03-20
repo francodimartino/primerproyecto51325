@@ -9,6 +9,34 @@
 <body>
     <h1>PRIMERA PLANTILLA </h1>
     <p>Este es el contenido de la plantilla</p>
+
+    <p style= "color:red">Nombre= {{ nombre }}</p>
+    <p>Apellido={{ apellido }}</p>
+    <p>Edad= {{ edad }}</p>
+
+    <p>Lista de notas</p>
+
+    <ul>
+        {% for nota in lista %}
+
+        {% if nota > 5 %}
+
+        <li style="color:green">NOTA APROBADA: {{ nota }} </li>
+
+        {% else %}
+        <li style="color:red">NOTA DESAPROBADA: {{ nota }} </li>
+
+        {% endif %}
+
+        {% endfor %}
+        
+
+
+
+    </ul>
+
+
+    
     
 </body>
 </html>
